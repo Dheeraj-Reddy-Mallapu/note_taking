@@ -130,7 +130,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Container(
                           alignment: Alignment.topLeft,
                           decoration: BoxDecoration(
-                            border: Border.all(),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  offset: const Offset(2.5, 3.5))
+                            ],
+                            border: Border.all(
+                                width: 1.5,
+                                color: Theme.of(context).colorScheme.primary),
                             borderRadius: BorderRadius.circular(15),
                             color: Theme.of(context)
                                 .colorScheme
@@ -140,8 +147,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             Padding(
                               padding: const EdgeInsets.all(3.0),
                               child: Text(
-                                overflow: TextOverflow.ellipsis,
                                 '${idx + 1}. ${_journals[idx]['title'].toUpperCase()}',
+                                maxLines: 1,
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18,
@@ -154,7 +161,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: Column(
                                 children: [
                                   Text(_journals[idx]['content'],
-                                      style: const TextStyle(fontSize: 15)),
+                                      maxLines: 10,
+                                      style: const TextStyle(fontSize: 16)),
                                 ],
                               ),
                             ),
